@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+			 version="2.0">
+
+	<persistence-unit name="CharacterBuilder">
+
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>org.characterbuilder.persist.entity.FrontPageNews</class>
+		<class>org.characterbuilder.persist.entity.MutantAbility</class>
+		<class>org.characterbuilder.persist.entity.MutantAbilityCharacter</class>
+		<class>org.characterbuilder.persist.entity.MutantAbilityGroup</class>
+		<class>org.characterbuilder.persist.entity.MutantArmor</class>
+		<class>org.characterbuilder.persist.entity.MutantArmorBodypart</class>
+		<class>org.characterbuilder.persist.entity.MutantArmorCharacter</class>
+		<class>org.characterbuilder.persist.entity.MutantBaseStat</class>
+		<class>org.characterbuilder.persist.entity.MutantBaseStatCharacter</class>
+		<class>org.characterbuilder.persist.entity.MutantCharacter</class>
+		<class>org.characterbuilder.persist.entity.MutantClass</class>
+		<class>org.characterbuilder.persist.entity.MutantDamageBonus</class>
+		<class>org.characterbuilder.persist.entity.MutantItem</class>
+		<class>org.characterbuilder.persist.entity.MutantItemCharacter</class>
+		<class>org.characterbuilder.persist.entity.MutantOccupation</class>
+		<class>org.characterbuilder.persist.entity.MutantSkill</class>
+		<class>org.characterbuilder.persist.entity.MutantSkillCharacter</class>
+		<class>org.characterbuilder.persist.entity.MutantSkillOccupation</class>
+		<class>org.characterbuilder.persist.entity.MutantWeapon</class>
+		<class>org.characterbuilder.persist.entity.MutantWeaponCharacter</class>
+
+		<class>org.characterbuilder.persist.entity.OauthProvider</class>
+
+		<class>org.characterbuilder.persist.entity.RollspelGrupp</class>
+		<class>org.characterbuilder.persist.entity.RollspelGruppApplication</class>
+		<class>org.characterbuilder.persist.entity.RollspelGruppMember</class>
+		<class>org.characterbuilder.persist.entity.RollspelGruppRole</class>
+		<class>org.characterbuilder.persist.entity.RollspelLog</class>
+		<class>org.characterbuilder.persist.entity.RollspelLogType</class>
+		<class>org.characterbuilder.persist.entity.RollspelStatus</class>
+		<class>org.characterbuilder.persist.entity.RollspelSession</class>
+		<class>org.characterbuilder.persist.entity.RollspelUser</class>
+		<class>org.characterbuilder.persist.entity.RollspelUserRole</class>
+		<class>org.characterbuilder.persist.entity.RollspelUserRoleApplication</class>
+
+		<class>org.characterbuilder.persist.entity.TrudvangArktype</class>
+		<class>org.characterbuilder.persist.entity.TrudvangArmor</class>
+		<class>org.characterbuilder.persist.entity.TrudvangArmorCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangArmorMod</class>
+		<class>org.characterbuilder.persist.entity.TrudvangArmorSet</class>
+		<class>org.characterbuilder.persist.entity.TrudvangArmorSetArmor</class>
+		<class>org.characterbuilder.persist.entity.TrudvangBodypart</class>
+		<class>org.characterbuilder.persist.entity.TrudvangBook</class>
+		<class>org.characterbuilder.persist.entity.TrudvangCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangElaboration</class>
+		<class>org.characterbuilder.persist.entity.TrudvangElaborationFree</class>
+		<class>org.characterbuilder.persist.entity.TrudvangElaborationRequire</class>
+		<class>org.characterbuilder.persist.entity.TrudvangElaborationCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangExceptional</class>
+		<class>org.characterbuilder.persist.entity.TrudvangExceptionalCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangExceptionalLevel</class>
+		<class>org.characterbuilder.persist.entity.TrudvangItem</class>
+		<class>org.characterbuilder.persist.entity.TrudvangItemCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangMod</class>
+		<class>org.characterbuilder.persist.entity.TrudvangModCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangModType</class>
+		<class>org.characterbuilder.persist.entity.TrudvangPeople</class>
+		<class>org.characterbuilder.persist.entity.TrudvangPower</class>
+		<class>org.characterbuilder.persist.entity.TrudvangPowerCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangReligion</class>
+		<class>org.characterbuilder.persist.entity.TrudvangSkill</class>
+		<class>org.characterbuilder.persist.entity.TrudvangSkillGroup</class>
+		<class>org.characterbuilder.persist.entity.TrudvangSkillInGroup</class>
+		<class>org.characterbuilder.persist.entity.TrudvangSkillCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangSkillExeptional</class>
+		<class>org.characterbuilder.persist.entity.TrudvangSkillExeptionalCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangSkillStart</class>
+		<class>org.characterbuilder.persist.entity.TrudvangUpbringing</class>
+		<class>org.characterbuilder.persist.entity.TrudvangWeaponMelee</class>
+		<class>org.characterbuilder.persist.entity.TrudvangWeaponMeleeCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangWeaponProjectile</class>
+		<class>org.characterbuilder.persist.entity.TrudvangWeaponProjectileCharacter</class>
+		<class>org.characterbuilder.persist.entity.TrudvangWeaponType</class>
+		<class>org.characterbuilder.persist.entity.TrudvangVitner</class>
+		<class>org.characterbuilder.persist.entity.TrudvangVitnerCharacter</class>
+
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.0.0.1:5432/rollspel"/>
+			<property name="javax.persistence.jdbc.user" value="jens"/>
+			<property name="javax.persistence.jdbc.password" value="password"/>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+			<property name="eclipselink.jdbc.exclusive-connection.mode" value="Transactional"/>
+		</properties>
+	</persistence-unit>
+</persistence>

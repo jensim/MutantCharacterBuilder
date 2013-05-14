@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+	<display-name>Vaadin Web Application</display-name>
+	<context-param>
+		<description>Vaadin production mode</description>
+		<param-name>productionMode</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>Mutant Character Builder by Jensim</servlet-name>
+		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
+		<init-param>
+			<param-name>UI</param-name>
+			<param-value>org.characterbuilder.CharbuildApp</param-value>
+		</init-param>
+		<!-- Uncomment next init-param if widgetset is needed -->
+		<!-- 
+  <init-param>
+  <description>Application widgetset</description>
+  <param-name>widgetset</param-name>
+  <param-value>org.characterbuilder.gwt.AppWidgetSet</param-value>
+  </init-param>
+		-->
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Mutant Character Builder by Jensim</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+<!--GOOGLE-->
+	<servlet>
+		<servlet-name>Google Callback</servlet-name>
+		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
+		<init-param>
+			<param-name>UI</param-name>
+			<param-value>org.oauth.GoogleCallback</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Google Callback</servlet-name>
+		<url-pattern>/googleoauth/*</url-pattern>
+	</servlet-mapping>
+
+<!--GITHUB-->
+	<servlet>
+		<servlet-name>Github Callback</servlet-name>
+		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
+		<init-param>
+			<param-name>UI</param-name>
+			<param-value>org.oauth.GithubCallback</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Github Callback</servlet-name>
+		<url-pattern>/githuboauth/*</url-pattern>
+	</servlet-mapping>
+
+<!--FACEBOOK-->
+	<servlet>
+		<servlet-name>Facebook Callback</servlet-name>
+		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
+		<init-param>
+			<param-name>UI</param-name>
+			<param-value>org.oauth.FacebookCallback</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Facebook Callback</servlet-name>
+		<url-pattern>/facebookoauth/*</url-pattern>
+	</servlet-mapping>
+
+<!--Stackexchange-->
+	<servlet>
+		<servlet-name>Stackexchange Callback</servlet-name>
+		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
+		<init-param>
+			<param-name>UI</param-name>
+			<param-value>org.oauth.StackexchangeCallback</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Stackexchange Callback</servlet-name>
+		<url-pattern>/stackexchangeoauth/*</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>
