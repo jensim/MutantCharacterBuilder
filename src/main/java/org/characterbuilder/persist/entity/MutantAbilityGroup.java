@@ -6,76 +6,70 @@ import java.util.Set;
 import javax.persistence.*;
 
 /**
- * 
+ *
  * @author <a href="mailto:jens.brimberg@gmail.com">Jens Brimberg</a>
  */
 @Entity
 @Table(name = "mutant_ability_group")
 public class MutantAbilityGroup implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    
-    @Id
-    @SequenceGenerator(name = "MUTANT_ABILITY_GROUP_ID_GENERATOR", sequenceName = "MUTANT_ABILITY_GROUP_ID_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MUTANT_ABILITY_GROUP_ID_GENERATOR")
-    @Column(unique = true, nullable = false)
-    private Integer id;
-    
-    @Column(nullable = false)
-    private Integer combineable;
-    
-    @Column(length = 2147483647, nullable=false)
-    private String description = "";
-    
-    @Column(nullable = false, length = 2147483647)
-    private String name;
-    
-    //bi-directional many-to-one association to MutantAbility
-    @OneToMany(mappedBy = "mutantAbilityGroup")
-    private Set<MutantAbility> mutantAbilities;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@SequenceGenerator(name = "MUTANT_ABILITY_GROUP_ID_GENERATOR", sequenceName = "MUTANT_ABILITY_GROUP_ID_SEQ", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MUTANT_ABILITY_GROUP_ID_GENERATOR")
+	@Column(unique = true, nullable = false)
+	private Integer id;
+	@Column(nullable = false)
+	private Integer combineable;
+	@Column(length = 2147483647, nullable = false)
+	private String description = "";
+	@Column(nullable = false, length = 2147483647)
+	private String name;
+	@OneToMany(mappedBy = "mutantAbilityGroup")
+	private Set<MutantAbility> mutantAbilities;
 
-    public MutantAbilityGroup() {
-    }
+	public MutantAbilityGroup() {
+	}
 
-    public Integer getId() {
-        return this.id;
-    }
+	public Integer getId() {
+		return this.id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Integer getCombineable() {
-        return this.combineable;
-    }
+	public Integer getCombineable() {
+		return this.combineable;
+	}
 
-    public void setCombineable(Integer combineable) {
-        this.combineable = combineable;
-    }
+	public void setCombineable(Integer combineable) {
+		this.combineable = combineable;
+	}
 
-    public String getDescription() {
-        return this.description;
-    }
+	public String getDescription() {
+		return this.description;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public String getName() {
-        return this.name;
-    }
+	public String getName() {
+		return this.name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Set<MutantAbility> getMutantAbilities() {
-        return this.mutantAbilities;
-    }
+	public Set<MutantAbility> getMutantAbilities() {
+		return this.mutantAbilities;
+	}
 
-    public void setMutantAbilities(Set<MutantAbility> mutantAbilities) {
-        this.mutantAbilities = mutantAbilities;
-    }
+	public void setMutantAbilities(Set<MutantAbility> mutantAbilities) {
+		this.mutantAbilities = mutantAbilities;
+	}
 
 	@Override
 	public int hashCode() {

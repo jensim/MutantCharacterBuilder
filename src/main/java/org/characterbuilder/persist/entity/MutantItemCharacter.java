@@ -5,7 +5,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 /**
- * 
+ *
  * @author <a href="mailto:jens.brimberg@gmail.com">Jens Brimberg</a>
  */
 @Entity
@@ -23,7 +23,6 @@ public class MutantItemCharacter implements Serializable {
 	private String name;
 	private Integer price = 0;
 	private Integer weight = 0;
-	//bi-directional many-to-one association to MutantCharacter
 	@ManyToOne
 	@JoinColumn(name = "character_id", nullable = false)
 	private MutantCharacter mutantCharacter;
@@ -54,13 +53,6 @@ public class MutantItemCharacter implements Serializable {
 		this.ammount = ammount;
 	}
 
-	/*public String getDescription() {
-	 return this.description;
-	 }
-
-	 public void setDescription(String description) {
-	 this.description = description;
-	 }*/
 	public String getName() {
 		return this.name;
 	}

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 /**
- * 
+ *
  * @author <a href="mailto:jens.brimberg@gmail.com">Jens Brimberg</a>
  */
 @Entity
@@ -21,7 +21,7 @@ public class MutantAbility implements Serializable {
 	private String activation;
 	@Column(nullable = false)
 	private Integer cost;
-	@Column(length = 2147483647, nullable=false)
+	@Column(length = 2147483647, nullable = false)
 	private String description = "";
 	@Column(length = 2147483647)
 	private String duration;
@@ -31,15 +31,12 @@ public class MutantAbility implements Serializable {
 	private String name;
 	@Column(length = 2147483647)
 	private String reach;
-	//bi-directional many-to-one association to MutantAbilityGroup
 	@ManyToOne()
 	@JoinColumn(name = "ability_group_id")
 	private MutantAbilityGroup mutantAbilityGroup;
-	//bi-directional many-to-one association to MutantClass
 	@ManyToOne()
 	@JoinColumn(name = "class_id", nullable = false)
 	private MutantClass mutantClass;
-	//bi-directional many-to-one association to MutantSkill
 	@ManyToOne()
 	@JoinColumn(name = "skill_id")
 	private MutantSkill mutantSkill;

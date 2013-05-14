@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 /**
- * 
+ *
  * @author <a href="mailto:jens.brimberg@gmail.com">Jens Brimberg</a>
  */
 @Entity
@@ -14,22 +14,23 @@ import javax.persistence.*;
 public class MutantClass implements Serializable {
 
 	@Id
-	@SequenceGenerator(name = "MUTANT_CLASS_ID_GENERATOR", sequenceName = "MUTANT_CLASS_ID_SEQ", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MUTANT_CLASS_ID_GENERATOR")
+	@SequenceGenerator(name = "MUTANT_CLASS_ID_GENERATOR",
+	sequenceName = "MUTANT_CLASS_ID_SEQ",
+	allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,
+	generator = "MUTANT_CLASS_ID_GENERATOR")
 	@Column(unique = true, nullable = false)
 	private Integer id;
 	@Column(name = "base_stat_points", nullable = false)
 	private Integer baseStatPoints;
-	@Column(length = 2147483647, nullable=false)
+	@Column(length = 2147483647, nullable = false)
 	private String description = "";
 	@Column(nullable = false, length = 50)
 	private String name;
 	@Column(name = "short_name", nullable = false, length = 25)
 	private String shortName;
-	//bi-directional many-to-one association to MutantAbility
 	@OneToMany(mappedBy = "mutantClass")
 	private Set<MutantAbility> mutantAbilities;
-	//bi-directional many-to-one association to MutantCharacter
 	@OneToMany(mappedBy = "mutantClass")
 	private Set<MutantCharacter> mutantCharacters;
 

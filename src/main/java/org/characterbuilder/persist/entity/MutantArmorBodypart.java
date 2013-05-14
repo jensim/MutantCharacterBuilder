@@ -6,76 +6,70 @@ import java.util.Set;
 import javax.persistence.*;
 
 /**
- * 
+ *
  * @author <a href="mailto:jens.brimberg@gmail.com">Jens Brimberg</a>
  */
 @Entity
 @Table(name = "mutant_armor_bodypart")
 public class MutantArmorBodypart implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @SequenceGenerator(name = "MUTANT_ARMOR_BODYPART_ID_GENERATOR", sequenceName = "MUTANT_ARMOR_BODYPART_ID_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MUTANT_ARMOR_BODYPART_ID_GENERATOR")
-    @Column(unique = true, nullable = false)
-    private Integer id;
-    
-    @Column(length = 2147483647, nullable=false)
-    private String description = "";
-    
-    @Column(nullable = false, length = 50)
-    private String name;
-    
-    //bi-directional many-to-one association to MutantArmor
-    @OneToMany(mappedBy = "mutantArmorBodypart")
-    private Set<MutantArmor> mutantArmors;
-    
-    //bi-directional many-to-one association to MutantArmorCharacter
-    @OneToMany(mappedBy = "mutantArmorBodypart")
-    private Set<MutantArmorCharacter> mutantArmorCharacters;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@SequenceGenerator(name = "MUTANT_ARMOR_BODYPART_ID_GENERATOR", sequenceName = "MUTANT_ARMOR_BODYPART_ID_SEQ", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MUTANT_ARMOR_BODYPART_ID_GENERATOR")
+	@Column(unique = true, nullable = false)
+	private Integer id;
+	@Column(length = 2147483647, nullable = false)
+	private String description = "";
+	@Column(nullable = false, length = 50)
+	private String name;
+	@OneToMany(mappedBy = "mutantArmorBodypart")
+	private Set<MutantArmor> mutantArmors;
+	@OneToMany(mappedBy = "mutantArmorBodypart")
+	private Set<MutantArmorCharacter> mutantArmorCharacters;
 
-    public MutantArmorBodypart() {
-    }
+	public MutantArmorBodypart() {
+	}
 
-    public Integer getId() {
-        return this.id;
-    }
+	public Integer getId() {
+		return this.id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getDescription() {
-        return this.description;
-    }
+	public String getDescription() {
+		return this.description;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public String getName() {
-        return this.name;
-    }
+	public String getName() {
+		return this.name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Set<MutantArmor> getMutantArmors() {
-        return this.mutantArmors;
-    }
+	public Set<MutantArmor> getMutantArmors() {
+		return this.mutantArmors;
+	}
 
-    public void setMutantArmors(Set<MutantArmor> mutantArmors) {
-        this.mutantArmors = mutantArmors;
-    }
+	public void setMutantArmors(Set<MutantArmor> mutantArmors) {
+		this.mutantArmors = mutantArmors;
+	}
 
-    public Set<MutantArmorCharacter> getMutantArmorCharacters() {
-        return this.mutantArmorCharacters;
-    }
+	public Set<MutantArmorCharacter> getMutantArmorCharacters() {
+		return this.mutantArmorCharacters;
+	}
 
-    public void setMutantArmorCharacters(Set<MutantArmorCharacter> mutantArmorCharacters) {
-        this.mutantArmorCharacters = mutantArmorCharacters;
-    }
+	public void setMutantArmorCharacters(Set<MutantArmorCharacter> mutantArmorCharacters) {
+		this.mutantArmorCharacters = mutantArmorCharacters;
+	}
 
 	@Override
 	public int hashCode() {
@@ -99,8 +93,8 @@ public class MutantArmorBodypart implements Serializable {
 		return true;
 	}
 
-    @Override
-    public String toString() {
-        return name;
-    }
+	@Override
+	public String toString() {
+		return name;
+	}
 }

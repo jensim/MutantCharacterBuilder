@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 /**
- * 
+ *
  * @author <a href="mailto:jens.brimberg@gmail.com">Jens Brimberg</a>
  */
 @Entity
@@ -19,96 +19,66 @@ public class MutantCharacter implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MUTANT_CHARACTER_ID_GENERATOR")
 	@Column(unique = true, nullable = false)
 	private Integer id;
-	
 	@Column(name = "age")
 	private Integer age = 20;
-	
 	@Column(name = "creation_points", nullable = false)
 	private Integer creationPoints = 30;
-	
 	@Column(name = "ff_springa")
 	private Integer ffSpringa = 0;
-	
 	@Column(name = "ff_sprint")
 	private Integer ffSprint = 0;
-	
 	@Column(name = "ff_strid")
 	private Integer ffStrid = 0;
-	
 	@Column(name = "health_points")
 	private Integer healthPoints = 0;
-	
 	@Column(length = 50)
 	private String home = "";
-	
 	@Column(name = "initiativbonus")
 	private Integer initiativbonus = 0;
-	
 	@Column(name = "length")
 	private Integer length = 170;
-	
 	@Column(length = 2147483647, name = "looks")
 	private String looks = "";
-	
 	@Column(name = "money")
 	private Integer money = 0;
-	
 	@Column(nullable = false, length = 50, name = "name")
 	private String name;
-	
 	@Column(name = "other_text", length = 2147483647)
 	private String otherText = "";
-	
 	@Column(name = "prior_occupation", length = 50)
 	private String priorOccupation;
-	
 	@Column(name = "rumor_points")
 	private Integer rumorPoints = 0;
-	
 	@Column(length = 50)
 	private String sex = "";
-	
 	@Column(name = "status_points")
 	private Integer statusPoints = 0;
-	
 	@Column(name = "trauma_points")
 	private Integer traumaPoints = 0;
-	
-	@Column(name="weight")
+	@Column(name = "weight")
 	private Integer weight = 70;
-	
 	@Column(name = "damage_bonus", length = 25)
 	private String damageBonus = "0";
-	
 	@Column(name = "carry_cap")
 	private Integer carryCap = 0;
-	
 	@Column(name = "reaktion_value")
 	private Integer reactionValue = 0;
-	
 	@OneToMany(mappedBy = "mutantCharacter")
 	private Set<MutantAbilityCharacter> mutantAbilityCharacters;
-
 	@OneToMany(mappedBy = "mutantCharacter")
 	private Set<MutantBaseStatCharacter> mutantBaseStatCharacters;
-	
 	@ManyToOne
 	@JoinColumn(name = "class_id", nullable = false)
 	private MutantClass mutantClass;
-	
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
 	private RollspelUser rollspelUser;
-	
 	@OneToMany(mappedBy = "mutantCharacter")
 	private Set<MutantItemCharacter> mutantItemCharacters;
-	
 	@OneToMany(mappedBy = "mutantCharacter")
 	private Set<MutantSkillCharacter> mutantSkillCharacters;
-	
 	@OneToMany(mappedBy = "mutantCharacter")
 	private Set<MutantWeaponCharacter> mutantWeaponCharacters;
-	
 	@OneToMany(mappedBy = "mutantCharacter")
 	private Set<MutantArmorCharacter> mutantArmorCharacters;
 
