@@ -1,10 +1,8 @@
 package org.characterbuilder.pages.abst.trudvang;
 
-import java.util.Date;
 import javax.persistence.EntityManager;
 import org.characterbuilder.pages.abst.WorkspaceLayout;
 import org.characterbuilder.persist.ThePersister;
-import org.characterbuilder.persist.entity.RollspelSession;
 import org.characterbuilder.persist.entity.TrudvangCharacter;
 
 /**
@@ -21,18 +19,7 @@ public abstract class TrudvangCharacterWorkspaceLayout extends WorkspaceLayout {
 
 	}
 
-	protected void updateCharacter(TrudvangCharacter character) {
-		try {
-			EntityManager em = ThePersister.getEntityManager();
-			em.getTransaction().begin();
-			this.character = em.find(TrudvangCharacter.class, character.getId());
-			RollspelSession session = ThePersister.getSession();
-			session.setSessionActivityTimestamp(new Date());
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			notifyError("Exception", "Failed getting updated character.", e, null);
-		}
-	}
+
 
 	protected void commitCharacter() {
 		EntityManager em = ThePersister.getEntityManager();

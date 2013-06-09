@@ -1,4 +1,4 @@
-package org.characterbuilder;
+package org.characterbuilder.passwords;
 
 //Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 //

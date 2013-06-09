@@ -5,79 +5,85 @@ import java.sql.Timestamp;
 import javax.persistence.*;
 
 /**
- *
+ * 
  * @author <a href="mailto:jens.brimberg@gmail.com">Jens Brimberg</a>
  */
 @Entity
 @Table(name = "front_page_news")
 public class FrontPageNews implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	@Id
-	@SequenceGenerator(name = "FRONT_PAGE_NEWS_ID_GENERATOR", sequenceName = "FRONT_PAGE_NEWS_ID_SEQ", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FRONT_PAGE_NEWS_ID_GENERATOR")
-	@Column(updatable = false, unique = true, nullable = false)
-	private Integer id;
-	@Column(length = 2147483647)
-	private String content;
-	@Column(name = "death_time")
-	private Timestamp deathTime;
-	@Column(length = 100)
-	private String header;
-	@Column(name = "post_time", nullable = false)
-	private Timestamp postTime;
-	private Boolean visible;
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @SequenceGenerator(name = "FRONT_PAGE_NEWS_ID_GENERATOR", sequenceName = "FRONT_PAGE_NEWS_ID_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FRONT_PAGE_NEWS_ID_GENERATOR")
+    @Column(updatable = false, unique = true, nullable = false)
+    private Integer id;
+    
+    @Column(length = 2147483647) 
+    private String content;
+    
+    @Column(name = "death_time")
+    private Timestamp deathTime;
+    
+    @Column(length = 100)
+    private String header;
+    
+    @Column(name = "post_time", nullable = false)
+    private Timestamp postTime;
+    
+    private Boolean visible;
 
-	public FrontPageNews() {
-	}
+    public FrontPageNews() {
+    }
 
-	public Integer getId() {
-		return this.id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getContent() {
-		return this.content;
-	}
+    public String getContent() {
+        return this.content;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public Timestamp getDeathTime() {
-		return this.deathTime;
-	}
+    public Timestamp getDeathTime() {
+        return this.deathTime;
+    }
 
-	public void setDeathTime(Timestamp deathTime) {
-		this.deathTime = deathTime;
-	}
+    public void setDeathTime(Timestamp deathTime) {
+        this.deathTime = deathTime;
+    }
 
-	public String getHeader() {
-		return this.header;
-	}
+    public String getHeader() {
+        return this.header;
+    }
 
-	public void setHeader(String header) {
-		this.header = header;
-	}
+    public void setHeader(String header) {
+        this.header = header;
+    }
 
-	public Timestamp getPostTime() {
-		return this.postTime;
-	}
+    public Timestamp getPostTime() {
+        return this.postTime;
+    }
 
-	public void setPostTime(Timestamp postTime) {
-		this.postTime = postTime;
-	}
+    public void setPostTime(Timestamp postTime) {
+        this.postTime = postTime;
+    }
 
-	public Boolean getVisible() {
-		return this.visible;
-	}
+    public Boolean getVisible() {
+        return this.visible;
+    }
 
-	public void setVisible(Boolean visible) {
-		this.visible = visible;
-	}
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
+    }
 
 	@Override
 	public int hashCode() {
@@ -103,6 +109,6 @@ public class FrontPageNews implements Serializable {
 
 	@Override
 	public String toString() {
-		return "<h1>" + header + "</h1><p>" + content + "</p>";
+		return "<h1>"+header+"</h1><p>"+content+"</p>";
 	}
 }

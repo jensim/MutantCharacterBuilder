@@ -1,6 +1,7 @@
 package org.characterbuilder.persist.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -20,6 +21,27 @@ public class RollspelUser implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ROLLSPEL_USER_ID_GENERATOR")
 	@Column(unique = true, nullable = false)
 	private Integer id;
+	@Column(name="email", nullable = false, length = 250)
+	private String email;
+	@Column(name="password", length = 250)
+	private String password;
+	@Column(name="password_sso", length = 250)
+	private String passwordSSO;
+	@ManyToOne
+	@JoinColumn(name = "status_id", nullable = false)
+	private RollspelStatus rollspelStatus;
+	@ManyToOne
+	@JoinColumn(name = "user_role_id", nullable = false)
+	private RollspelUserRole rollspelUserRole;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "last_active")
+	private Date lastactive;
+	@ManyToOne
+	@JoinColumn(name = "oauth_provider_id")
+	private OauthProvider oauthProvider;
+	@Column(name = "oauth_provider_user_id")
+	private String oauthUserID;
+	
 	@OneToMany(mappedBy = "rollspelUser")
 	private Set<MutantCharacter> mutantCharacters;
 	@OneToMany(mappedBy = "rollspelUser")
@@ -28,24 +50,11 @@ public class RollspelUser implements Serializable {
 	private Set<RollspelGruppMember> rollspelGruppMembers;
 	@OneToMany(mappedBy = "rollspelUser")
 	private Set<RollspelLog> rollspelLogs;
-	@ManyToOne
-	@JoinColumn(name = "status_id", nullable = false)
-	private RollspelStatus rollspelStatus;
-	@ManyToOne
-	@JoinColumn(name = "user_role_id", nullable = false)
-	private RollspelUserRole rollspelUserRole;
 	@OneToMany(mappedBy = "rollspelUser")
 	private List<RollspelUserRoleApplication> rollspelUserRoleApplications;
 	@OneToMany(mappedBy = "user")
 	private List<TrudvangCharacter> trudvangCharacters;
-	@ManyToOne
-	@JoinColumn(name = "oauth_provider_id")
-	private OauthProvider oauthProvider;
-	@Column(name = "oauth_provider_user_id")
-	private String oauthUserID;
-	@OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST})
-	private List<RollspelSession> sessionList;
-
+	
 	public RollspelUser() {
 	}
 
@@ -137,12 +146,36 @@ public class RollspelUser implements Serializable {
 		this.oauthUserID = oauthUserID;
 	}
 
-	public List<RollspelSession> getSessionList() {
-		return sessionList;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setSessionList(List<RollspelSession> sessionList) {
-		this.sessionList = sessionList;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPasswordSSO() {
+		return passwordSSO;
+	}
+
+	public void setPasswordSSO(String passwordSSO) {
+		this.passwordSSO = passwordSSO;
+	}
+
+	public Date getLastactive() {
+		return lastactive;
+	}
+
+	public void setLastactive(Date lastactive) {
+		this.lastactive = lastactive;
 	}
 
 	@Override

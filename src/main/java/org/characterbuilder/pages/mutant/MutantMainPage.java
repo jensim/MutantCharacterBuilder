@@ -3,6 +3,7 @@ package org.characterbuilder.pages.mutant;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.server.Resource;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.HorizontalLayout;
@@ -69,7 +70,8 @@ public class MutantMainPage extends MainPage implements ValueChangeListener {
 
 		Integer userRole = 0;
 		try {
-			userRole = CharbuildApp.getRollspelUser().getRollspelUserRole().getId();
+			userRole = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName())
+					.getRollspelUserRole().getId();
 		} catch (NullPointerException e) {
 			notifyError("Session error.", "Unable to map Session to a user.", e, null);
 			goLogin();
@@ -181,7 +183,7 @@ public class MutantMainPage extends MainPage implements ValueChangeListener {
 		characterMenuTree.setImmediate(true);
 
 		//POPULATE WITH CHARACTERS
-		RollspelUser user = CharbuildApp.getRollspelUser();
+		RollspelUser user = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName());
 		try {
 			Set<MutantCharacter> mcList = user.getMutantCharacters();
 			for (MutantCharacter mc : mcList) {
@@ -454,7 +456,8 @@ public class MutantMainPage extends MainPage implements ValueChangeListener {
 				//Application app = getApplication();
 				//String sessionID = ((WebApplicationContext) app.getContext()).getHttpSession().getId();
 				String sessionID = getUI().getSession().getSession().getId();
-				RollspelUser user = ThePersister.getUser(sessionID);
+				RollspelUser user = ThePersister.getRollspelUser(
+						VaadinService.getCurrentRequest().getUserPrincipal().getName());
 
 
 				if (user == null) {
@@ -572,7 +575,8 @@ public class MutantMainPage extends MainPage implements ValueChangeListener {
 
 		@Override
 		public void buttonClick(ClickEvent event) {
-			RollspelUser user = CharbuildApp.getRollspelUser();
+			RollspelUser user = ThePersister.getRollspelUser(
+					VaadinService.getCurrentRequest().getUserPrincipal().getName());
 
 			if (user != null) {
 				Object obj = characterMenuTree.getValue();

@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -30,11 +31,10 @@ public class TrudvangElaborationCharacter implements Serializable {
 	generator = "TRUDVANG_ELABORATION_CHARACTER_ID_GENERATOR")
 	@Column(unique = true, nullable = false)
 	private Integer id;
-	@Basic(optional = false)
-	@Column(name = "character_id")
-	@ManyToOne
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "character_id")
 	private TrudvangCharacter characterId;
-	@Basic(optional = false)
+	@Column(name="name", nullable = false)
 	private String name;
 	@Column(name="description", nullable=false)
 	private String description ="";

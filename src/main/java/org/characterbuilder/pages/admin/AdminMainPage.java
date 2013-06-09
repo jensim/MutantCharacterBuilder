@@ -1,5 +1,6 @@
 package org.characterbuilder.pages.admin;
 
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Label;
@@ -30,7 +31,7 @@ public class AdminMainPage extends MainPage {
 
 		Integer userRole = 0;
 		try {
-			RollspelUser user = CharbuildApp.getRollspelUser();
+			RollspelUser user = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName());
 			userRole = user.getRollspelUserRole().getId();
 			adminHeader = new Label("<b><u>user: </u></b>"
 					  + user.getOauthUserID() + "@" + user.getOauthProvider().getName(),
@@ -110,9 +111,9 @@ public class AdminMainPage extends MainPage {
 		logoutButton.addListener(new Button.ClickListener() {
 			private static final long serialVersionUID = 3446070187695611705L;
 
+			@Override
 			public void buttonClick(ClickEvent event) {
 				try {
-					ThePersister.logout();
 					goLogin();
 				} catch (IllegalStateException ise) {
 					notifyError("Logout error",

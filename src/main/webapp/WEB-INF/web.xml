@@ -7,7 +7,7 @@
 		<param-value>false</param-value>
 	</context-param>
 	<servlet>
-		<servlet-name>Mutant Character Builder by Jensim</servlet-name>
+		<servlet-name>chargen</servlet-name>
 		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
 		<init-param>
 			<param-name>UI</param-name>
@@ -23,65 +23,42 @@
 		-->
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Mutant Character Builder by Jensim</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<servlet-name>chargen</servlet-name>
+		<url-pattern>/chargen/*</url-pattern>
 	</servlet-mapping>
-
-<!--GOOGLE-->
-	<servlet>
-		<servlet-name>Google Callback</servlet-name>
-		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
-		<init-param>
-			<param-name>UI</param-name>
-			<param-value>org.oauth.GoogleCallback</param-value>
-		</init-param>
-	</servlet>
 	<servlet-mapping>
-		<servlet-name>Google Callback</servlet-name>
-		<url-pattern>/googleoauth/*</url-pattern>
+		<servlet-name>chargen</servlet-name>
+		<url-pattern>/VAADIN/*</url-pattern>
 	</servlet-mapping>
 
-<!--GITHUB-->
-	<servlet>
-		<servlet-name>Github Callback</servlet-name>
-		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
-		<init-param>
-			<param-name>UI</param-name>
-			<param-value>org.oauth.GithubCallback</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Github Callback</servlet-name>
-		<url-pattern>/githuboauth/*</url-pattern>
-	</servlet-mapping>
+	<security-constraint>
+		<web-resource-collection>
+			<description>Secureerer</description>
+			<url-pattern>/chargen/*</url-pattern>
+			<url-pattern>/VAADIN/*</url-pattern>
+			<web-resource-name>CharGenSecurity</web-resource-name>
+			
+			
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>user</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-role>
+		<role-name>user</role-name>
+	</security-role>
 
-<!--FACEBOOK-->
-	<servlet>
-		<servlet-name>Facebook Callback</servlet-name>
-		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
-		<init-param>
-			<param-name>UI</param-name>
-			<param-value>org.oauth.FacebookCallback</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Facebook Callback</servlet-name>
-		<url-pattern>/facebookoauth/*</url-pattern>
-	</servlet-mapping>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login/login.jsp</form-login-page>
+			<form-error-page>/login/login_error.jsp</form-error-page>
+		</form-login-config>
+		<realm-name>DatabaseWithSSOSupport</realm-name>
+	</login-config>
 
-<!--Stackexchange-->
-	<servlet>
-		<servlet-name>Stackexchange Callback</servlet-name>
-		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
-		<init-param>
-			<param-name>UI</param-name>
-			<param-value>org.oauth.StackexchangeCallback</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Stackexchange Callback</servlet-name>
-		<url-pattern>/stackexchangeoauth/*</url-pattern>
-	</servlet-mapping>
-
+	<welcome-file-list>
+		<welcome-file>/login/login.jsp</welcome-file>
+	</welcome-file-list>
 
 </web-app>

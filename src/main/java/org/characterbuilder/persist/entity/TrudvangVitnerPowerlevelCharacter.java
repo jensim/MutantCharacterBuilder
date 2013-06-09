@@ -1,20 +1,25 @@
 package org.characterbuilder.persist.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  * TrudvangVitnerPowerlevelCharacter
  * @author <a href="mailto:jens.brimberg@gmail.com">Jens Brimberg</a>
  */
-public class TrudvangVitnerPowerlevelCharacter {
+@Entity
+@Table(name="trudvang_vitner_powerlevel_character", catalog = "rollspel", schema = "public")
+public class TrudvangVitnerPowerlevelCharacter implements Serializable {
 	
 	@Id
 	@SequenceGenerator(name = "TRUDVANG_VITNER_POWERLEVEL_CHARACTER_ID_GENERATOR",

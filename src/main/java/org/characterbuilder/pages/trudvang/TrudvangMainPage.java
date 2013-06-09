@@ -6,6 +6,7 @@ import com.vaadin.data.Item;
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.util.filter.Compare;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.AbstractSelect;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -49,7 +50,8 @@ public class TrudvangMainPage extends MainPage {
 
 		Integer userRole = 0;
 		try {
-			userRole = CharbuildApp.getRollspelUser().getRollspelUserRole().getId();
+			userRole = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName())
+					.getRollspelUserRole().getId();
 		} catch (NullPointerException e) {
 			notifyError("Session error.", "Unable to map Session to a user.", e, null);
 			goLogin();
@@ -164,7 +166,7 @@ public class TrudvangMainPage extends MainPage {
 
 		//CHARACTER LIST/TREE
 		characterContainer = JPAContainerFactory.make(TrudvangCharacter.class, ThePersister.ENTITY_MANAGER_NAME);
-		RollspelUser user = CharbuildApp.getRollspelUser();
+		RollspelUser user = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName());
 		characterContainer.addContainerFilter(new Compare.Equal("user", user));
 		characterMenuTree = new Tree("Karaktärer", characterContainer);
 		characterMenuTree.setMultiSelect(false);

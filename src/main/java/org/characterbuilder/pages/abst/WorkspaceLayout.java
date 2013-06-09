@@ -1,5 +1,6 @@
 package org.characterbuilder.pages.abst;
 
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Panel;
@@ -23,12 +24,6 @@ public abstract class WorkspaceLayout extends VerticalLayout {
 		setSpacing(true);
 	}
 
-	protected void verifyUser() {
-		if (CharbuildApp.getRollspelUser() == null) {
-			CharbuildApp.logout();
-		}
-	}
-
 	protected void setInfo(String info) {
 		infoPanel.setContent(new Label(info, Label.CONTENT_XHTML));
 	}
@@ -40,7 +35,7 @@ public abstract class WorkspaceLayout extends VerticalLayout {
 	protected void notifyError(String type, String info, Throwable exception, RollspelUser user) {
 		if (user == null) {
 			try {
-				user = CharbuildApp.getRollspelUser();
+				user = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName());
 			} catch (Exception ex) {
 			}
 		}
@@ -51,7 +46,7 @@ public abstract class WorkspaceLayout extends VerticalLayout {
 	protected void notifyWarning(String type, String info, Throwable exception, RollspelUser user) {
 		if (user == null) {
 			try {
-				user = CharbuildApp.getRollspelUser();
+				user = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName());
 			} catch (Exception ex) {
 			}
 		}
@@ -62,7 +57,7 @@ public abstract class WorkspaceLayout extends VerticalLayout {
 	protected void notifyInfo(String type, String info, Throwable exception, RollspelUser user) {
 		if (user == null) {
 			try {
-				user = CharbuildApp.getRollspelUser();
+				user = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName());
 			} catch (Exception ex) {
 			}
 		}

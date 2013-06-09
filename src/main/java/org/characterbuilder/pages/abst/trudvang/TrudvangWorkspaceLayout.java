@@ -1,6 +1,5 @@
 package org.characterbuilder.pages.abst.trudvang;
 
-import java.util.Date;
 import javax.persistence.EntityManager;
 import org.characterbuilder.pages.abst.WorkspaceLayout;
 import org.characterbuilder.persist.ThePersister;
@@ -16,18 +15,6 @@ public abstract class TrudvangWorkspaceLayout extends WorkspaceLayout {
 
 	public TrudvangWorkspaceLayout(TrudvangCharacter character) {
 		super();
-		updateCharacter(character);
-	}
-
-	protected void updateCharacter(TrudvangCharacter character) {
-		try {
-			EntityManager em = ThePersister.getEntityManager();
-			em.getTransaction().begin();
-			ThePersister.getSession().setSessionActivityTimestamp(new Date());
-			em.getTransaction().commit();
-		} catch (Exception ex) {
-			notifyError("Character fail", "Failed commiting changes", ex, null);
-		}
 	}
 
 	protected void commitCharacter() {

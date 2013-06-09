@@ -39,8 +39,6 @@ public class TrudvangVitner implements Serializable {
 	@ManyToOne(optional=false)
 	@JoinColumn(name="type_id")
 	private TrudvangVitnerType vitnerType;
-	@OneToMany(mappedBy = "vitner")
-	private List<TrudvangVitnerPowerlevel> powerlevels;
 	@Column(name="manatime")
 	@Basic(optional=false)
 	private String manatime;
@@ -50,6 +48,8 @@ public class TrudvangVitner implements Serializable {
 	@Column(name="reach")
 	@Basic(optional=false)
 	private String reach;
+	@OneToMany(mappedBy = "vitner")
+	private List<TrudvangVitnerPowerlevel> powerlevels;
 	
 
 	public TrudvangVitner() {

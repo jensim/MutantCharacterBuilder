@@ -1,5 +1,6 @@
 package org.characterbuilder.pages.trudvang.createcharacter;
 
+import com.vaadin.server.VaadinService;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -112,7 +113,7 @@ public final class TrudvangPageCreateCharacter extends WorkspaceLayout {
 				if (state == State.Skill && skillPicker != null) {
 					try {
 						TrudvangCharacter newCharacter = new TrudvangCharacter();
-						newCharacter.setUser(CharbuildApp.getRollspelUser());
+						newCharacter.setUser(ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName()));
 
 						//FIXME: Exceptionals
 						TrudvangExceptionalLevel exPos1 = excepPicker.pos1.getTrudvangExcepLevel();

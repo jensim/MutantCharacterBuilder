@@ -376,6 +376,62 @@ public class TrudvangCharacter implements Serializable {
 		this.armorList = trudvangArmorCharacterList;
 	}
 
+	public List<TrudvangSkillCharacter> getSkillList() {
+		return skillList;
+	}
+
+	public void setSkillList(List<TrudvangSkillCharacter> skillList) {
+		this.skillList = skillList;
+	}
+
+	public List<TrudvangExceptionalCharacter> getExceptionalList() {
+		return exceptionalList;
+	}
+
+	public void setExceptionalList(List<TrudvangExceptionalCharacter> exceptionalList) {
+		this.exceptionalList = exceptionalList;
+	}
+
+	public List<TrudvangWeaponProjectileCharacter> getProjectileWeaponList() {
+		return projectileWeaponList;
+	}
+
+	public void setProjectileWeaponList(List<TrudvangWeaponProjectileCharacter> projectileWeaponList) {
+		this.projectileWeaponList = projectileWeaponList;
+	}
+
+	public List<TrudvangWeaponMeleeCharacter> getMeleeWeaponList() {
+		return meleeWeaponList;
+	}
+
+	public void setMeleeWeaponList(List<TrudvangWeaponMeleeCharacter> meleeWeaponList) {
+		this.meleeWeaponList = meleeWeaponList;
+	}
+
+	public List<TrudvangItemCharacter> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<TrudvangItemCharacter> itemList) {
+		this.itemList = itemList;
+	}
+
+	public List<TrudvangArmorCharacter> getArmorList() {
+		return armorList;
+	}
+
+	public void setArmorList(List<TrudvangArmorCharacter> armorList) {
+		this.armorList = armorList;
+	}
+
+	public List<TrudvangElaborationCharacter> getElaborations() {
+		return elaborations;
+	}
+
+	public void setElaborations(List<TrudvangElaborationCharacter> elaborations) {
+		this.elaborations = elaborations;
+	}
+
 	@Override
 	public int hashCode() {
 		int hash = 0;

@@ -6,6 +6,7 @@ import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
  * TrudvangElaborationLevel
  * @author <a href="mailto:jens.brimberg@gmail.com">Jens Brimberg</a>
  */
+@Entity
 @Table(name = "trudvang_elaboration_level", catalog = "rollspel", schema = "public")
 public class TrudvangElaborationLevel implements Serializable{
 	@Id

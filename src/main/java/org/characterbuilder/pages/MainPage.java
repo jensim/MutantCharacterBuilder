@@ -1,5 +1,6 @@
 package org.characterbuilder.pages;
 
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.VerticalLayout;
@@ -29,7 +30,7 @@ public abstract class MainPage extends HorizontalLayout {
 	protected void notifyError(String type, String info, Throwable exception, RollspelUser user) {
 		if (user == null) {
 			try {
-				user = ThePersister.getUser(CharbuildApp.getSessionID());
+				user = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName());
 			} catch (Exception ex) {
 			}
 		}
@@ -40,7 +41,7 @@ public abstract class MainPage extends HorizontalLayout {
 	protected void notifyWarning(String type, String info, Throwable exception, RollspelUser user) {
 		if (user == null) {
 			try {
-				user = ThePersister.getUser(CharbuildApp.getSessionID());
+				user = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName());
 			} catch (Exception ex) {
 			}
 		}
@@ -51,7 +52,7 @@ public abstract class MainPage extends HorizontalLayout {
 	protected void notifyInfo(String type, String info, Throwable exception, RollspelUser user) {
 		if (user == null) {
 			try {
-				user = CharbuildApp.getRollspelUser();
+				user = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName());
 			} catch (Exception ex) {
 			}
 		}

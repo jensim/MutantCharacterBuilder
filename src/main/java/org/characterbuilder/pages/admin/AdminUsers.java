@@ -2,6 +2,7 @@ package org.characterbuilder.pages.admin;
 
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Label;
@@ -120,11 +121,8 @@ public class AdminUsers extends WorkspaceLayout implements ValueChangeListener {
 
 			@Override
 			public void buttonClick(ClickEvent event) {
-				RollspelUser user = CharbuildApp.getRollspelUser();
-				if (user.getRollspelUserRole().getId() < 8) {
-					CharbuildApp.logout();
-				}
-
+				RollspelUser user = ThePersister.getRollspelUser(VaadinService.getCurrentRequest().getUserPrincipal().getName());
+				
 				EntityManager em = ThePersister.getEntityManager();
 				try {
 

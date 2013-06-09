@@ -272,7 +272,7 @@ public class MutantArmors extends MutantCharacterWorkspaceLayout {
 							ownTable.addLine(newItem);
 							ownTable.select(newItem);
 
-							ThePersister.logIt(1, "MutantArmor added to character " + mutantCharacter.getId(), null, CharbuildApp.getRollspelUser());
+							ThePersister.logIt(1, "MutantArmor added to character " + mutantCharacter.getId(), null, null);
 						} catch (Exception e) {
 							notifyError("Mutant Armor", "failed adding new weapon to character", e, null);
 						}
@@ -300,7 +300,7 @@ public class MutantArmors extends MutantCharacterWorkspaceLayout {
 						ownTable.addLine(itmchar);
 						ownTable.select(itmchar);
 
-						ThePersister.logIt(1, "Mutant armor added to character " + mutantCharacter.getId(), null, CharbuildApp.getRollspelUser());
+						ThePersister.logIt(1, "Mutant armor added to character " + mutantCharacter.getId(), null, null);
 					} catch (Exception e) {
 						notifyError("Mutant armor", "error adding new weapon to character", e, null);
 					}
@@ -325,7 +325,7 @@ public class MutantArmors extends MutantCharacterWorkspaceLayout {
 						em.remove(item);
 						em.getTransaction().commit();
 
-						ThePersister.logIt(1, "MutantArmor removed from character " + mutantCharacter.getId(), null, CharbuildApp.getRollspelUser());
+						ThePersister.logIt(1, "MutantArmor removed from character " + mutantCharacter.getId(), null, null);
 					} catch (Exception e) {
 						notifyError("Mutant armor", "error removing weapon from character", e, null);
 					}
@@ -362,7 +362,7 @@ public class MutantArmors extends MutantCharacterWorkspaceLayout {
 					ownTable.addLine(item);
 					ownTable.select(itmchar);
 
-					ThePersister.logIt(1, "MutantArmor edited on character " + mutantCharacter.getId(), null, CharbuildApp.getRollspelUser());
+					ThePersister.logIt(1, "MutantArmor edited on character " + mutantCharacter.getId(), null, null);
 				} catch (Exception e) {
 					notifyError("Mutant armor", "Failed updating information on character weapon", e, null);
 				}

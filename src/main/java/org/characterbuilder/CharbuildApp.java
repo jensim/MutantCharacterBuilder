@@ -14,18 +14,12 @@ import org.characterbuilder.persist.entity.RollspelUser;
 public class CharbuildApp extends UI {
 
 	private static final long serialVersionUID = 1695235185603122706L;
-	private static String sessionID = "";
-	private static String ipAddr = "";
-
+	
 	@Override
 	protected void init(VaadinRequest request) {
-
-		try {
-			sessionID = getSession().getSession().getId();
-			ipAddr = request.getRemoteAddr();
-		} catch (NullPointerException npe) {
-		}
 		
+		//TODO: set SSO Pass for user to null
+
 		setContent(new TrudvangPageCreateCharacter());
 		//setContent(new TrudvangManageSuperArktype());
 		//setContent(new TrudvangManageSuperPeople());
@@ -44,25 +38,5 @@ public class CharbuildApp extends UI {
 			setContent(lp);
 		}
 		*/
-	}
-
-	public static void setIP(String ip) {
-		ipAddr = ip;
-	}
-
-	public static String getIP() {
-		return ipAddr;
-	}
-
-	public static String getSessionID() {
-		return sessionID;
-	}
-
-	public static RollspelUser getRollspelUser() {
-		return ThePersister.getUser(sessionID);
-	}
-
-	public static void logout() {
-		ThePersister.logout(sessionID);
 	}
 }

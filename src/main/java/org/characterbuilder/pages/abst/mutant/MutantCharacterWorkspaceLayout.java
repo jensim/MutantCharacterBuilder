@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import org.characterbuilder.pages.abst.WorkspaceLayout;
 import org.characterbuilder.persist.ThePersister;
 import org.characterbuilder.persist.entity.MutantCharacter;
-import org.characterbuilder.persist.entity.RollspelSession;
 
 /**
  * 
@@ -19,21 +18,7 @@ public abstract class MutantCharacterWorkspaceLayout extends WorkspaceLayout imp
 
 	public MutantCharacterWorkspaceLayout(MutantCharacter mc) {
 		super();
-		updateCharacter(mc);
 		addComponent(infoPanel);
-	}
-
-	protected void updateCharacter(MutantCharacter mc) {
-		EntityManager em = ThePersister.getEntityManager();
-		try {
-			em.getTransaction().begin();
-			mutantCharacter = em.find(MutantCharacter.class, mc.getId());
-			RollspelSession session = ThePersister.getSession();
-			session.setSessionActivityTimestamp(new Date());
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			notifyError("Exception", "Failed getting updated character.", e, null);
-		}
 	}
 
 	protected void commitCharacter() {

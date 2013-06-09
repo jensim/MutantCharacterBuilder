@@ -15,24 +15,31 @@ import static org.junit.Assert.*;
 
 /**
  *
-* @author <a href="mailto:jens.brimberg@gmail.com">jens brimberg</a>
+ * @author <a href="mailto:jens.brimberg@gmail.com">jens brimberg</a>
  */
 public class JpaTest {
+
 	EntityManager em = null;
 
 	@Before
 	public void setUp() throws Exception {
-		em = ThePersister.getEntityManager();
+		em = ThePersister.getEntityManager(ThePersister.ENTITY_MANAGER_NAME+"Test");
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		em.close();
-		em = null;
+		if (em != null) {
+			try {
+				em.close();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			em = null;
+		}
 	}
-	
+
 	@Test
-	public void testJPA(){
+	public void testJPA() {
 		em.getTransaction().begin();
 		RollspelLog log = new RollspelLog();
 		log.setRollspelLogType(em.find(RollspelLogType.class, 1));
@@ -41,6 +48,7 @@ public class JpaTest {
 		Assert.assertNotNull(log.getId());
 		RollspelLog gotten = em.find(RollspelLog.class, log.getId());
 		Assert.assertNotNull(gotten);
-		System.out.println("New log entry id: "+gotten.getId());
+		System.out.println("New log entry id: " + gotten.getId());
 	}
+
 }
