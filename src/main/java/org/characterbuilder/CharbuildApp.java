@@ -3,8 +3,6 @@ package org.characterbuilder;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
 import org.characterbuilder.pages.trudvang.createcharacter.TrudvangPageCreateCharacter;
-import org.characterbuilder.persist.ThePersister;
-import org.characterbuilder.persist.entity.RollspelUser;
 
 /**
  *

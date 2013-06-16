@@ -21,114 +21,112 @@ import sun.misc.BASE64Encoder;
 public class PasswordEncoder {
 
 	private static final Logger log = LoggerFactory.getLogger(PasswordEncoder.class);
-    private static PasswordEncoder instance;
+	private static PasswordEncoder instance;
 
-    /**
-     * Count for the number of time to hash,
-     * more you hash more difficult it would be for the attacker
-     */
-    private final static int ITERATION_COUNT = 5;
+	/**
+	 * Count for the number of time to hash, more you hash more difficult it would be for the attacker
+	 */
+	private final static int ITERATION_COUNT = 5;
 
-    /**
-     * Empty Constructor
-     */
-    private PasswordEncoder() {
-    }
-
-    /**
-     * @return
-     * @author Ashish Shukla
-     */
-    public static synchronized PasswordEncoder getInstance() {
-	if (log.isDebugEnabled()) {
-	    log.debug("getInstance() - start");
+	/**
+	 * Empty Constructor
+	 */
+	private PasswordEncoder() {
 	}
 
-	if (instance == null) {
-	    PasswordEncoder returnPasswordEncoder = new PasswordEncoder();
-	    log.info("New instance created");
-	    if (log.isDebugEnabled()) {
-		log.debug("getInstance() - end");
-	    }
-	    return returnPasswordEncoder;
-	} else {
-	    if (log.isDebugEnabled()) {
-		log.debug("getInstance() - end");
-	    }
-	    return instance;
-	}
-    }
+	/**
+	 * @return @author Ashish Shukla
+	 */
+	public static synchronized PasswordEncoder getInstance() {
+		if (log.isDebugEnabled()) {
+			log.debug("getInstance() - start");
+		}
 
-    /**
-     *
-     * @param password
-     * @param saltKey
-     * @return
-     * @throws NoSuchAlgorithmException
-     * @throws IOException
-     * @author Ashish Shukla
-     */
-    public synchronized String encode(String password, String saltKey)
-	    throws NoSuchAlgorithmException, IOException {
-	if (log.isDebugEnabled()) {
-	    log.debug("encode(String, String) - start");
+		if (instance == null) {
+			PasswordEncoder returnPasswordEncoder = new PasswordEncoder();
+			log.info("New instance created");
+			if (log.isDebugEnabled()) {
+				log.debug("getInstance() - end");
+			}
+			return returnPasswordEncoder;
+		} else {
+			if (log.isDebugEnabled()) {
+				log.debug("getInstance() - end");
+			}
+			return instance;
+		}
 	}
 
-	String encodedPassword = null;
-	byte[] salt = base64ToByte(saltKey);
+	/**
+	 *
+	 * @param password
+	 * @param saltKey
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws IOException
+	 * @author Ashish Shukla
+	 */
+	public synchronized String encode(String password, String saltKey)
+			throws NoSuchAlgorithmException, IOException {
+		if (log.isDebugEnabled()) {
+			log.debug("encode(String, String) - start");
+		}
 
-	MessageDigest digest = MessageDigest.getInstance("SHA-256");
-	digest.reset();
-	digest.update(salt);
+		String encodedPassword = null;
+		byte[] salt = base64ToByte(saltKey);
 
-	byte[] btPass = digest.digest(password.getBytes("UTF-8"));
-	for (int i = 0; i < ITERATION_COUNT; i++) {
-	    digest.reset();
-	    btPass = digest.digest(btPass);
+		MessageDigest digest = MessageDigest.getInstance("SHA-256");
+		digest.reset();
+		digest.update(salt);
+
+		byte[] btPass = digest.digest(password.getBytes("UTF-8"));
+		for (int i = 0; i < ITERATION_COUNT; i++) {
+			digest.reset();
+			btPass = digest.digest(btPass);
+		}
+
+		encodedPassword = byteToBase64(btPass);
+
+		if (log.isDebugEnabled()) {
+			log.debug("encode(String, String) - end");
+		}
+		return encodedPassword;
 	}
 
-	encodedPassword = byteToBase64(btPass);
+	/**
+	 * @param str
+	 * @return byte[]
+	 * @throws IOException
+	 */
+	private byte[] base64ToByte(String str) throws IOException {
+		if (log.isDebugEnabled()) {
+			log.debug("base64ToByte(String) - start");
+		}
 
-	if (log.isDebugEnabled()) {
-	    log.debug("encode(String, String) - end");
-	}
-	return encodedPassword;
-    }
-
-    /**
-     * @param str
-     * @return byte[]
-     * @throws IOException
-     */
-    private byte[] base64ToByte(String str) throws IOException {
-	if (log.isDebugEnabled()) {
-	    log.debug("base64ToByte(String) - start");
-	}
-
-	BASE64Decoder decoder = new BASE64Decoder();
-	byte[] returnbyteArray = decoder.decodeBuffer(str);
-	if (log.isDebugEnabled()) {
-	    log.debug("base64ToByte(String) - end");
-	}
-	return returnbyteArray;
-    }
-
-    /**
-     * @param bt
-     * @return String
-     * @throws IOException
-     */
-    private String byteToBase64(byte[] bt) {
-	if (log.isDebugEnabled()) {
-	    log.debug("byteToBase64(byte[]) - start");
+		BASE64Decoder decoder = new BASE64Decoder();
+		byte[] returnbyteArray = decoder.decodeBuffer(str);
+		if (log.isDebugEnabled()) {
+			log.debug("base64ToByte(String) - end");
+		}
+		return returnbyteArray;
 	}
 
-	BASE64Encoder endecoder = new BASE64Encoder();
-	String returnString = endecoder.encode(bt);
-	if (log.isDebugEnabled()) {
-	    log.debug("byteToBase64(byte[]) - end");
+	/**
+	 * @param bt
+	 * @return String
+	 * @throws IOException
+	 */
+	private String byteToBase64(byte[] bt) {
+		if (log.isDebugEnabled()) {
+			log.debug("byteToBase64(byte[]) - start");
+		}
+
+		BASE64Encoder endecoder = new BASE64Encoder();
+		String returnString = endecoder.encode(bt);
+		if (log.isDebugEnabled()) {
+			log.debug("byteToBase64(byte[]) - end");
+		}
+		return returnString;
 	}
-	return returnString;
-    }
 
 }

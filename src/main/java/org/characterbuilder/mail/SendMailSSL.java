@@ -16,7 +16,7 @@ import org.characterbuilder.persist.ThePersister;
  */
 public class SendMailSSL {
 
-	public static void newUser(String toMail, String password) {
+	public synchronized static void newUser(String toMail, String password) {
 		sendMail(
 				toMail,
 				"kungstroll@gmail.com",
@@ -32,7 +32,7 @@ public class SendMailSSL {
 				"Registration E-mail, kungstroll");
 	}
 
-	public static void forgottenPassword(String toMail, String password) {
+	public synchronized static void forgottenPassword(String toMail, String password) {
 		sendMail(
 				toMail,
 				"kungstroll@gmail.com",
@@ -44,7 +44,7 @@ public class SendMailSSL {
 				"Temporary password, kungstroll");
 	}
 
-	public static void sendMail(String toMail, String fromMail, String messageContent, String subject) {
+	public synchronized static void sendMail(String toMail, String fromMail, String messageContent, String subject) {
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.localhost", "localhost");

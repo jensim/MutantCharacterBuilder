@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta http-equiv="refresh" content="1; url=login.jsp">
+<meta http-equiv="refresh" content="1; url=..">
 <title>Logout</title>
 </head>
-<body>
+<body bgcolor="#f3f3ff">
 	<% session.invalidate(); %>
 	<h1>Logging out</h1>
 </body>

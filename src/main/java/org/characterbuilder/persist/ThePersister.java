@@ -2,16 +2,10 @@ package org.characterbuilder.persist;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.transaction.UserTransaction;
 import org.characterbuilder.persist.entity.MutantBaseStat;
 import org.characterbuilder.persist.entity.MutantBaseStatCharacter;
 import org.characterbuilder.persist.entity.MutantCharacter;
@@ -31,7 +25,7 @@ public class ThePersister {
 	public static final Integer LOG_VIOLATION = 3;
 	public static final Integer LOG_CRASH = 9;
 	public static final String ENTITY_MANAGER_NAME = "CharacterBuilder";
-	public static final String ENTITY_MANAGER_JNDI = "java:jboss/datasources/roleplay";
+	//public static final String ENTITY_MANAGER_JNDI = "java:jboss/datasources/roleplay";
 
 	private static EntityManagerFactory buildEntityManagerFactory(String emName) {
 		try {
@@ -47,15 +41,6 @@ public class ThePersister {
 	 * @return
 	 */
 	public static EntityManager getEntityManager() {
-		try {
-			//FIXME: Cannot find in EntityManager on .lookup(String)
-			Object obj = new InitialContext().lookup(ENTITY_MANAGER_JNDI);
-			if (obj != null) {
-				return (EntityManager) obj;
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 		return buildEntityManagerFactory(ENTITY_MANAGER_NAME).createEntityManager();
 	}
 
@@ -63,23 +48,9 @@ public class ThePersister {
 		return buildEntityManagerFactory(enityManagerName).createEntityManager();
 	}
 
-	public static UserTransaction getUserTransation() {
-		InitialContext ic;
-		try {
-			ic = new InitialContext();
-			Object utx = ic.lookup(" java:jboss/UserTransaction");
-			if (utx instanceof UserTransaction) {
-				return (UserTransaction) utx;
-			}
-		} catch (NamingException ex) {
-			Logger.getLogger(ThePersister.class.getName()).log(Level.SEVERE, null, ex);
-		}
-		return null;
-	}
-
 	public static MutantBaseStatCharacter getCharacterBaseStat(MutantCharacter mutantCharacter, int stat_id) throws Exception {
 		if (stat_id < 1 || stat_id > 7) {
-			throw new Exception("");
+			throw new Exception("Unknown id for mutant base stat");
 		}
 		try {
 			EntityManager em = getEntityManager();
@@ -95,7 +66,7 @@ public class ThePersister {
 					.getSingleResult();
 			return statChar;
 		} catch (Exception e) {
-			throw new Exception("");
+			throw e;
 		}
 	}
 

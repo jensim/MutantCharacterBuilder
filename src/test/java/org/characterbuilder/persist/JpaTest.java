@@ -11,7 +11,6 @@ import org.characterbuilder.persist.entity.RollspelLogType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -23,7 +22,7 @@ public class JpaTest {
 
 	@Before
 	public void setUp() throws Exception {
-		em = ThePersister.getEntityManager(ThePersister.ENTITY_MANAGER_NAME+"Test");
+		em = ThePersister.getEntityManager(ThePersister.ENTITY_MANAGER_NAME);
 	}
 
 	@After

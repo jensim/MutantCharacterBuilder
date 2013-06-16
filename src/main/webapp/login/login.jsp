@@ -11,13 +11,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Login</title>
     </head>
-    <body>
+    <body bgcolor="f3f3ff">
         <h1>Hello World!</h1>
 		<form method="post" action="j_security_check" >
 		email:&nbsp;<input type="text" name="j_username" /><br/>
 		password:&nbsp;<input type="password" name="j_password" /> <br/>
 		<input type="submit"  /><br/>
-		<a href="login/register.jsp">Register</a>
+		<a href="../login/register.jsp">Register</a>
 	</form>
     </body>
 </html>

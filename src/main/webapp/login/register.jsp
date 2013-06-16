@@ -11,10 +11,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		
         <title>Register new account</title>
+		
+		<style>
+			body{
+				color:#000030;
+				background:#f3f3ff;
+			}
+			
+		</style>
     </head>
     <body>
         <h1>Register account!</h1>
-		<form action="register_processed.jsp" action="POST">
+		<form action="register_processed.jsp" method="POST">
 			email:&nbsp;<input type="text" name="email" />
 			<input type="submit" value="Request" />
 		</form>
