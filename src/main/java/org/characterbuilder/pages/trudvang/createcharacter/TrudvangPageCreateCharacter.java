@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.characterbuilder.CharbuildApp;
+import org.characterbuilder.navigation.ChargenMenu;
 import org.characterbuilder.pages.abst.WorkspaceLayout;
 import org.characterbuilder.persist.ThePersister;
 import org.characterbuilder.persist.entity.TrudvangArktype;
@@ -52,6 +53,7 @@ public final class TrudvangPageCreateCharacter extends WorkspaceLayout {
 		backButton.setVisible(false);
 		doneButton.setVisible(false);
 
+		addComponent(new ChargenMenu());
 		addComponent(new Label("<h1>Skapa karaktär</h1>", ContentMode.HTML));
 		addComponent(layout);
 		layout.addComponent(bckGrndPicker);

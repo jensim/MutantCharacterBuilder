@@ -23,7 +23,8 @@
     <body>
         <h1>Register account!</h1>
 		<form action="register_processed.jsp" method="POST">
-			email:&nbsp;<input type="text" name="email" />
+			email:&nbsp;<input type="text" name="email" /><br/>
+			passw:&nbsp;<input type="text" name="pass" /><br/>
 			<input type="submit" value="Request" />
 		</form>
     </body>

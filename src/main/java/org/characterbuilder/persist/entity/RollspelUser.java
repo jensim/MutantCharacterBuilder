@@ -35,7 +35,7 @@ public class RollspelUser implements Serializable {
 	private RollspelUserRole rollspelUserRole;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "last_active")
-	private Date lastactive;
+	private Date lastactive = new Date();
 	@ManyToOne
 	@JoinColumn(name = "oauth_provider_id")
 	private OauthProvider oauthProvider;
